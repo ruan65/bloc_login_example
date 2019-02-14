@@ -26,20 +26,20 @@ class AuthenticationBloc
       final bool hasToken = await userRepository.hasToken();
 
       if(hasToken) {
-        yield AuthenticationAuthenticated();
+        yield AuthenticationAuthenticatedState();
       } else {
         yield AuthenticationUnauthenticated();
       }
     }
 
     if(event is LoggedInEvent) {
-      yield AuthenticationLoading();
+      yield AuthenticationLoadingState();
       await userRepository.persistToken();
-      yield AuthenticationAuthenticated();
+      yield AuthenticationAuthenticatedState();
     }
 
     if(event is LoggedOutEvent) {
-      yield AuthenticationLoading();
+      yield AuthenticationLoadingState();
       await userRepository.deleteToken();
       yield AuthenticationUnauthenticated();
     }

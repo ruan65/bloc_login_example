@@ -7,7 +7,7 @@ import 'package:user_repository/user_repository.dart';
 class LoginPage extends StatefulWidget {
   final UserRepository userRepository;
 
-  const LoginPage({Key key, this.userRepository}) : super(key: key);
+  const LoginPage({Key key, @required this.userRepository}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _LoginPageState();
@@ -19,11 +19,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
+    _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
+
     _loginBloc = LoginBloc(
       userRepository: widget.userRepository,
       authenticationBloc: _authenticationBloc,
     );
-    _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     super.initState();
   }
 

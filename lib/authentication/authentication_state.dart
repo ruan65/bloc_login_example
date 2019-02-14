@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 abstract class AuthenticationState extends Equatable {}
 
-class AuthenticationUninitialized extends AuthenticationState {
+class AuthenticationUninitializedState extends AuthenticationState {
   @override
   String toString() => 'AuthenticationUninitialized';
 }
 
-class AuthenticationAuthenticated extends AuthenticationState {
+class AuthenticationAuthenticatedState extends AuthenticationState {
   @override
   String toString() => 'AuthenticationAuthenticated';
 }
@@ -17,7 +17,7 @@ class AuthenticationUnauthenticated extends AuthenticationState {
   String toString() => 'AuthenticationUnauthenticated';
 }
 
-class AuthenticationLoading extends AuthenticationState {
+class AuthenticationLoadingState extends AuthenticationState {
   @override
   String toString() => 'AuthenticationLoading';
 }
